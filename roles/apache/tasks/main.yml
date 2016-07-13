@@ -1,0 +1,17 @@
+---
+
+- name: install apache
+  apt: name=apache2 state=latest
+
+- name: apache envvars
+  template: src=envvars.j2 dest=/etc/apache2/envvars force=yes
+  notify: restart apache
+
+- name: mod_rewrite
+  command: a2enmod rewrite
+  notify: restart apache
+
+- name: mod_ssl
+  command: a2enmod ssl
+  notify: restart apache
+

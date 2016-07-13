@@ -1,0 +1,10 @@
+---
+
+mysql_bind_address: 127.0.0.1
+mysql_max_allowed_packet: 16M
+mysql_root_password:
+mysql_remote_root: false
+
+apache_run_user: www-data
+apache_run_group: www-data
+

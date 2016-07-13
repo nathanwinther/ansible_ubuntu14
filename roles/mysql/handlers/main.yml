@@ -1,0 +1,11 @@
+---
+
+- name: restart mysql
+  service: name=mysql state=restarted
+
+- name: run_once remote_root
+  shell: mysql -uroot mysql < /var/ansible/mysql/remote_root.sql
+
+- name: run_once root_password
+  shell: mysql -uroot mysql < /var/ansible/mysql/root_password.sql
+

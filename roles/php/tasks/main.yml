@@ -1,0 +1,53 @@
+---
+
+- name: php5
+  apt: name=php5 state=latest
+
+- name: php-apc
+  apt: name=php-apc state=latest
+
+- name: php5-curl
+  apt: name=php5-curl state=latest
+
+- name: php5-gd
+  apt: name=php5-gd state=latest
+
+- name: php5-imagick
+  apt: name=php5-imagick state=latest
+
+- name: php5-memcache
+  apt: name=php5-memcache state=latest
+
+- name: php5-mcrypt
+  apt: name=php5-mcrypt state=latest
+
+- name: php5-mysql
+  apt: name=php5-mysql state=latest
+
+- name: php5-xdebug
+  apt: name=php5-xdebug state=latest
+
+- name: php5-xmlrpc
+  apt: name=php5-xmlrpc state=latest
+
+- name: php5-xsl
+  apt: name=php5-xsl state=latest
+
+# mycrypt NOT ENABLED by default. Create symlinks
+- name: /etc/php5/apache2 exists?
+  stat: path=/etc/php5/apache2
+  register: st
+
+- name: apache mcrypt enable
+  file: src=/etc/php5/mods-available/mcrypt.ini dest=/etc/php5/apache2/conf.d/30-mycrypt.ini state=link
+  when: st.stat.isdir is defined and st.stat.isdir
+
+# mycrypt NOT ENABLED by default. Create symlinks
+- name: /etc/php5/cli exists?
+  stat: path=/etc/php5/cli
+  register: st
+
+- name: cli mcrypt enable
+  file: src=/etc/php5/mods-available/mcrypt.ini dest=/etc/php5/cli/conf.d/30-mycrypt.ini state=link
+  when: st.stat.isdir is defined and st.stat.isdir
+

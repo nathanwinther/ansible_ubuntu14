@@ -1,0 +1,20 @@
+---
+
+- name: install mysql
+  apt: name=mysql-server state=latest
+
+- name: extra
+  template: src=extra.cnf.j2 dest=/etc/mysql/conf.d/extra.cnf force=yes
+  notify: restart mysql
+
+- name: run once
+  file: path=/var/ansible/mysql state=directory
+
+- name: remote root
+  template: src=remote_root.sql.j2 dest=/var/ansible/mysql/remote_root.sql force=no
+  notify: run_once remote_root
+
+- name: root password
+  template: src=root_password.sql.j2 dest=/var/ansible/mysql/root_password.sql force=no
+  notify: run_once root_password
+

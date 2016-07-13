@@ -1,0 +1,14 @@
+---
+
+- hosts: all
+  remote_user: vagrant
+  become: yes
+  become_user: root
+  become_method: sudo
+
+  roles:
+    - common
+    - mysql
+    - apache
+    - php
+
