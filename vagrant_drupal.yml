@@ -12,4 +12,5 @@
     - apache
     - php
     - memcached
+    - drush
 
