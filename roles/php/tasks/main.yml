@@ -34,7 +34,7 @@
   apt: name=php5-xsl state=latest
 
 # mycrypt NOT ENABLED by default. Create symlinks
-- name: /etc/php5/apache2 exists?
+- name: php apache?
   stat: path=/etc/php5/apache2
   register: st
 
@@ -43,7 +43,7 @@
   when: st.stat.isdir is defined and st.stat.isdir
 
 # mycrypt NOT ENABLED by default. Create symlinks
-- name: /etc/php5/cli exists?
+- name: php cli?
   stat: path=/etc/php5/cli
   register: st
 
