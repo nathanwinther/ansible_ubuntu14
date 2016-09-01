@@ -1,0 +1,32 @@
+---
+
+- name: apt repository php7.0
+  apt_repository: repo=ppa:ondrej/php
+
+- name: apt update
+  apt: update_cache=yes
+
+- name: php7.0
+  apt: name=php7.0 state=latest
+
+- name: php7.0-curl
+  apt: name=php7.0-curl state=latest
+
+- name: php7.0-gd
+  apt: name=php7.0-gd state=latest
+
+- name: php7.0-mcrypt
+  apt: name=php7.0-mcrypt state=latest
+
+- name: php7.0-mysql
+  apt: name=php7.0-mysql state=latest
+
+- name: php7.0-xml
+  apt: name=php7.0-xmlrpc state=latest
+
+- name: php7.0-xmlrpc
+  apt: name=php7.0-xmlrpc state=latest
+
+- name: php7.0-xsl
+  apt: name=php7.0-xsl state=latest
+

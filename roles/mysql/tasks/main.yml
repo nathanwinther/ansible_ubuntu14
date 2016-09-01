@@ -1,7 +1,7 @@
 ---
 
 - name: install mysql
-  apt: name=mysql-server state=latest
+  apt: name=mysql-server-5.6 state=latest
 
 - name: extra
   template: src=extra.cnf.j2 dest=/etc/mysql/conf.d/extra.cnf force=yes
